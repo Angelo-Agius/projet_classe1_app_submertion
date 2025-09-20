@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Flutter Demo', home: MyHomePage());
+    return MaterialApp(title: 'App Submertion', home: MyHomePage());
   }
 }
 
