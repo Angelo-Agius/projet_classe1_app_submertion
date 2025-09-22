@@ -16,6 +16,13 @@ pluginManagement {
     }
 }
 
+buildscript {
+    dependencies {
+        // Force Kotlin à une version compatible
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    }
+}
+
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
     id("com.android.application") version "8.7.0" apply false

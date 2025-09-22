@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projet_classe1_app_submertion/screens/simulation1_page.dart';
+//import 'package:projet_classe1_app_submertion/screens/simulation2_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -73,6 +74,41 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.indigoAccent,
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 10,
+                      ),
+                    ),
+                    onPressed: null,
+                    // onPressed: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     CupertinoPageRoute(
+                    //       builder: (context) => Simulation2Page(),
+                    //     ),
+                    //   );
+                    // },
+                    child: Text(
+                      'Simulaton 2',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '(Bientôt disponible)',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
                 ],

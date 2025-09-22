@@ -16,6 +16,7 @@ class _Simulation1PageState extends State<Simulation1Page>
   bool showBackButton = true;
   bool showResetButton = false;
 
+
   @override
   void initState() {
     super.initState();
@@ -27,13 +28,12 @@ class _Simulation1PageState extends State<Simulation1Page>
 
     _heightAnimation = Tween<double>(
       begin: 0,
-      end: 500, //Faudra qu'ont ajute en fonction de l'image du prof
+      end: 455, //Faudra qu'ont ajute en fonction de l'image du prof
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         setState(() {
-          showOverlay = true;
           showBackButton = true;
           showResetButton = true;
         });
@@ -56,7 +56,16 @@ class _Simulation1PageState extends State<Simulation1Page>
     return Scaffold(
       body: Stack(
         children: [
-          Container(color: Colors.yellow),
+          Container(
+            color: Colors.yellow,
+            child: Image.asset(
+              "assets/imgs/simulation1_img.png",
+              fit: BoxFit.cover,
+              alignment: Alignment.centerLeft,
+              width: double.infinity,
+              height: double.infinity
+            ),
+          ),
           Positioned(
             left: 0,
             right: 0,
@@ -68,7 +77,9 @@ class _Simulation1PageState extends State<Simulation1Page>
                   width: 150,
                   height: _heightAnimation.value,
                   decoration: BoxDecoration(
-                    color: Colors.blue, //ont mettra de la transparence quand on aura l'image
+                    color:
+                        Colors
+                            .blue.withValues(alpha: 0.7), //ont mettra de la transparence quand on aura l'image
                   ),
                 );
               },
@@ -107,7 +118,7 @@ class _Simulation1PageState extends State<Simulation1Page>
               top: 20,
               left: 10,
               child: IconButton(
-                icon: Icon(Icons.arrow_back, size: 28),
+                icon: Icon(Icons.arrow_back, size: 28, color: showOverlay ? Colors.black : Colors.white),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -117,10 +128,11 @@ class _Simulation1PageState extends State<Simulation1Page>
             Align(
               alignment: Alignment.center,
               child: IconButton(
-                icon: Icon(Icons.replay, size: 50),
+                icon: Icon(Icons.replay, size: 50, color: showOverlay ? Colors.black : Colors.white,),
                 onPressed: () {
                   setState(() {
-                    _controller.reset();
+                    _startAnimation();
+                    showBackButton = false;
                     showResetButton = false;
                   });
                 },
